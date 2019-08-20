@@ -19,15 +19,30 @@
 <body>
     <h1>jQuery Common Effects</h1>
 
-    <button>Click me!</button>
-    <div>Don't fade me</div>
-    <div>Please don't fade me</div>
-    <div>Help! HEEEEEEEELP!</div>
+    <button id="fade">Click me & fade!</button>
+    <div class="divf">Don't fade me</div>
+    <div class="divf">Please don't fade me</div>
+    <div class="divf">Help! HEEEEEEEELP!</div>
+
+    <button id="slide">Click me & slide!</button>
+    <div class="divs">Don't fade me</div>
+    <div class="divs">Please don't fade me</div>
+    <div class="divs">Help! HEEEEEEEELP!</div>
     <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 
     <script>
-        $('button').on('click', function(){
-            $('div').fadeToggle("slow");
+        $('#slide').on('click', function(){
+            $('.divs').slideToggle("slow",function(){
+                console.log("Fade out completed!");
+            });
+        });
+        
+        
+        $('#fade').on('click', function(){
+            $('.divf').fadeToggle(5000,function(){
+                $(this).remove();
+                console.log("Fade out completed!");
+            });
         });
     </script>
 
