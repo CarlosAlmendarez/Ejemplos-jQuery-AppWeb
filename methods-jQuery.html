@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Common jQuery Methods</h1>
+
+    <ul class="common-methods">
+        <li>val()</li>
+        <li>text()</li>
+        <li>attr()</li>
+        <li>html()</li>
+        <li>addClass()</li>
+        <li>removeClass()</li>
+        <li>toggleClass()</li>
+    </ul>
+
+    <input type="text" name="" id="" placeholder="Write Something">
+
+    <img src="1.jpg" alt="future" srcset="">
+
+
+    <ul class="tareas">
+            <li>val()</li>
+            <li>text()</li>
+            <li>attr()</li>
+            <li>html()</li>
+            <li>addClass()</li>
+            <li>removeClass()</li>
+            <li>toggleClass()</li>
+        </ul>
+
+    <script>
+        //get the element
+        $('h1')
+        //get the value of the element
+        $('h1').val()
+        //get the text of the element
+        $('h1').text()
+        //set the text on the element
+        $('h1').text('You have been hacked')
+        //get the html of the element
+        $('h1').html()
+        //get the html of the element
+        $('ul').html()
+        //get the text of the element
+        $('ul').text()
+        //get the html of the value an set curretn with the html
+        var curretn = $('#common-methods').html()
+        //Show the content of curretn
+        console.log(curretn);
+        $('#common-methods').html(curretn + '<li>New element</li>')
+        $('input').val()
+        $('input').val('I did')
+        $('img').attr("src")
+        $('img').attr("src", "GY8Rg8f.png")
+        $('img').attr("width","600")
+
+    </script>
+    <style>
+        .correct {
+            color:green;
+            background-color: purple;
+        }
+
+        .wrong {
+            color: red;
+            background-color: purple;
+        }
+
+        .done {
+            color: grey;
+            background-color: purple;
+        }
+    </style>
+</body>
+</html>

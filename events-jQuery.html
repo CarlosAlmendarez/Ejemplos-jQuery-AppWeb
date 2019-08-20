@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Commond jQuery Events</h1>
+    <button>Don't click me</button>
+    <button>Seriously don't click me</button>
+    <button>Ok, Click me</button>
+    <input type="text" placeholder="Write something" id="Something">
+
+    <input type="text" placeholder="Add something" id="Add">
+    <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+
+    <script>
+    $('button').click(function(event) {
+            console.log(event);
+        }
+    );
+
+    $('button').click(function(event) {
+            console.log($(this).text());
+        }
+    );
+
+    $('input').keypress(function() {
+        console.log('you type something');
+        }
+    );
+
+    $('input').keypress(function() {
+        console.log($(this).val());
+        }
+    );
+
+    $('input').keypress(function() {
+        console.log('You type: ' + event.key);
+        }
+    );
+    
+    $('input').keypress(function() {
+        console.log('You type: ' + event.key);
+		if(event.wich == 13){
+			alert("You can go on!!");
+			}
+        }
+    );
+
+    $('#Add').on('keypress',function(event){
+        if(event.which === 13){
+            alert('Adding ' + $(this).val());
+            $('ul').append('<li>'+ $(this).val() + '</li>');
+            $(this).val(' ');
+        }
+    })
+
+    $('ul').on("click", "li", function()
+        {
+            console.log($(this).text());
+        }
+    );
+
+    $('button').on('mouseenter', function(){
+        $(this).css('background-color', 'purple');
+    }); 
+
+    $('button').on('mouseout', function(){
+        $(this).css('background-color', 'grey');
+    }); 
+    </script>
+
+</body>
+</html>
