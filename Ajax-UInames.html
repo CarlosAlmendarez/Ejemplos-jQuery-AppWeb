@@ -10,6 +10,17 @@
     
     <h1>UINAMES Ajax</h1>
 
+    <div class="btn-group" data-toggle="buttons">
+        <label class="btn btn-primary active">Male
+            <input type="radio" name="gender" id="male" autocomplete="off" checked>
+        </label>
+        <label class="btn btn-primary">Female
+            <input type="radio" name="gender" id="female" autocomplete="off">
+        </label>
+        <label class="btn btn-primary">Random
+            <input type="radio" name="gender" id="random" autocomplete="off ">
+        </label>
+    </div>
 
     <input type="number" id="number">
     <h2>Users</h2>
@@ -20,6 +31,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.js"integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
 
     <script>
+        var gender= "male"; 
         jQuery.ajax({
 			method: "GET",
 			url: "https://uinames.com/api/?amount=5&region=mexico",
@@ -34,23 +46,36 @@
 			}
 		})
 
+        $('input[type=radio]').on("click",function(){
+            gender = $(this).attr('id');
+        })
+
         $('#number').on("keypress",function(event){
             if(event.which === 13){
                 $('#users').html('');
                 var numer = $('#number').val();
-                jQuery.ajax({
-                method: "GET",
-                url: "https://uinames.com/api/?amount=" + numer + "&region=mexico",
-                success: function(data) {
-                    console.log(data);
-                    var i, user;
-                    for(i = 0; i < data.length; i++){
-                        user = data[i];
-                        console.log(user);
-                        $('#users').append('<li>' + user.name + ' '+ user.surname + '</li>');
+                if(numer > 0){        
+                    jQuery.ajax({
+                    method: "GET",
+                    url: "https://uinames.com/api/?amount=" + numer + "&gender=" + gender+"&region=mexico",
+                    success: function(data) {
+                        console.log(data);
+                        var i, user;
+                        if(numer == 1){
+                            $('#users').append('<li>' + data.name + ' '+ data.surname + '</li>');
+                        }else{
+
+                            for(i = 0; i < data.length; i++){
+                                user = data[i];
+                                console.log(user);
+                                $('#users').append('<li>' + user.name + ' '+ user.surname + '</li>');
+                            }
+                        }
                     }
+                    })
+                }else{
+                    alert("No sea permiten numeros negativos");
                 }
-                })
                 $('#number').val('');
             }
         })
